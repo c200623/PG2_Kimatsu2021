@@ -56,13 +56,16 @@ public class MainController {
 
 	@GetMapping("/delete/{id}")
 	public String confirmDeleting(@PathVariable(name="id") int id, Model model) {
-		service.delete(id);
-        return "redirect:/";
+		Account account = service.get(id);
+		model.addAttribute("account", account);
+        return "delete";
 	}
 
 	@PostMapping("/delete")
 	public String deleteAccount(@ModelAttribute("account") Account account, RedirectAttributes redirectAttributes) {
 		service.delete(account.getId());
+		String message = "#" + account.getId() + "「" + account.getName() + "」を削除しました。";
+		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/";
 	}
 

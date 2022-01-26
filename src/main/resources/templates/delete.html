@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
+<head th:replace="fragments/common :: common-header(title)">
     <meta charset="UTF-8">
     <title>削除画面</title>
     <link rel="stylesheet" href="/css/style.css" />
@@ -16,7 +16,7 @@
         </p>
 
 		<form action="#" th:action="@{/delete}" th:object="${account}" method="post">
-			<table>
+			<table class="table table-success table-striped">
 				<tr>
 					<td>ID:<input type="hidden" th:field="*{id}"></td>
 					<td th:text="*{id}"></td>

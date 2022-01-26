@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
+<head th:replace="fragments/common :: common-header(title)">
     <meta charset="UTF-8">
     <title>新規作成</title>
     <link rel="stylesheet" href="/css/style.css" />
@@ -16,7 +16,7 @@
         </p>
 
 		<form action="#" th:action="@{/new}" th:object="${account}" method="post">
-			<table>
+			<table class="table table-success table-striped">
 				<tr>
 					<td>名前:</td>
 					<td><input type="text" th:field="*{name}"></td>
